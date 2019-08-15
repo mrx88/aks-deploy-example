@@ -1,0 +1,12 @@
+FROM python:3.7.2-alpine
+
+COPY requirements.txt /tmp/
+
+RUN pip install -r /tmp/requirements.txt
+
+RUN adduser -D appuser
+USER appuser
+
+COPY martinapi.py .
+
+CMD [ "python", "./martinapi.py" ]
